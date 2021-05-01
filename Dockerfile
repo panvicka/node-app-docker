@@ -19,4 +19,4 @@ EXPOSE 3000
 
 
 ### RUN TIME 
-CMD ["node", "index.js"]
+CMD ["npm", "run", "dev"]
