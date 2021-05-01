@@ -1,13 +1,11 @@
+# any config that is shared within all configurations 
 version: "3"
-services: 
+services:
     node-app:
         build: . #path to dockerfile 
-        ports: 
-            - "3000:3000" #this is a list, more of them can be here
-        volumes:
-            - ./:/app #this is bind volume
-            - /app/node_modules # this is the anomymouns volume
-        environment:
+        ports:
+            - "3000:3000"
+        environment: 
             - PORT=3000
         # this would be for env file
         # env_file: 

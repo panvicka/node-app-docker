@@ -1,0 +1,15 @@
+# here we can overwrite & add stuff that is only for dev
+version: "3"
+services:
+    node-app:
+        # build with variable DEV as argument for dockerfile RUN
+        build: 
+            context: .
+            args: 
+                NODE_ENV: development
+        volumes:
+            - ./:/app #this is bind volume
+            - /app/node_modules # this is the anomymouns volume
+        environment:
+            - NODE_ENV=development
+        command: npm run dev # here overwritting the CMD ["node", "index.js"] in dockerfile

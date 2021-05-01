@@ -1,0 +1,12 @@
+# here we can overwrite & add stuff that is only for prod
+version: "3"
+services:
+    node-app:
+        # build with variable PROD as argument for dockerfile RUN
+        build: 
+            context: .
+            args: 
+                NODE_ENV: production
+        environment:
+            - NODE_ENV=production
+        command: node index.js

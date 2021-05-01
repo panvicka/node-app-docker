@@ -11,6 +11,15 @@ WORKDIR /app
 # copy first so the docker doesnt have to rebuild everytime something changes in our code
 # this way it will only rebuild if a change in package.json happens
 COPY package.json .
+
+# just calling RUN `npm install` installs dev dependencies also in production mode which is stupid
+
+ARG NODE_ENV
+RUN if [ "$NODE_ENV" = "development" ]; \
+        then npm install; \
+        else npm install --only=production; \
+        fi
+
 RUN npm install
 # copy the rest of the files 
 COPY . ./
@@ -25,4 +34,5 @@ EXPOSE $PORT
 
 
 ### RUN TIME 
-CMD ["npm", "run", "dev"]
+# this can be overwritten by stuff in dockercompose as well 
+CMD ["node", "index.js"]
