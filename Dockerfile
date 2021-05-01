@@ -14,8 +14,14 @@ COPY package.json .
 RUN npm install
 # copy the rest of the files 
 COPY . ./
+
+# enviromental variable 
+# but only default valus, we can overwrite them when starting container
+ENV PORT 3000
+
 # this is only for documentation more or less
-EXPOSE 3000
+EXPOSE $PORT
+
 
 
 ### RUN TIME 
