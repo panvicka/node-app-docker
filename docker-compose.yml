@@ -10,3 +10,10 @@ services:
         # this would be for env file
         # env_file: 
         #     - ./.env
+
+    mongo-database:
+        # do not need build here becuase we just want to use the image without any modifications
+        image: mongo
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=admin
+            - MONGO_INITDB_ROOT_PASSWORD=admin
